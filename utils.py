@@ -263,3 +263,18 @@ def submit(
 if __name__ == '__main__':
     if ('--input' in argv) or ('-i' in argv) or ('--get-input' in argv):
         get_input(write = True)
+    
+    if len(argv) == 3:
+        _, day, year = argv
+        day_idx = int(day)
+        year = int(year)
+        r = get_rank(day, year)
+    else:
+        r = get_rank()
+
+    if r:
+        print(f'Rank for day {day_idx}:')
+        print(f'  Level 1: {r.time_1} (rank {r.rank_1})')
+        print(f'  Level 2: {r.time_2} (rank {r.rank_2})')
+    else:
+        print(f'Rank for day {day_idx}, {year}, not found.')
